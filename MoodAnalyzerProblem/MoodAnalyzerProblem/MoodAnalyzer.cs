@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace MoodAnalyzerProblem
 {
     /// <summary>
-/// public classMood Analyzer
-/// </summary>
+    /// public classMood Analyzer
+    /// </summary>
     public class MoodAnalyzer
     {//instance variable
         private string Message;
@@ -21,14 +21,23 @@ namespace MoodAnalyzerProblem
         //method for MoodAnalyzer
         public string AnalyzeMood()
         {
-            //if message contains sad
-            if (this.Message.Contains("Sad"))
-               // it will retrun sad
-                return "Sad";
-            else
-                //else happy
+            //UC2
+            try
+            {
+                // put the code here that may raise exceptions
+                //if message contains sad
+                if (this.Message.Contains("Sad"))
+                    // it will retrun sad
+                    return "Sad";
+                else
+                    //else happy
+                    return "Happy";
+            }
+            catch
+            {
+                // handle exception here
                 return "Happy";
+            }
         }
-
     }
 }

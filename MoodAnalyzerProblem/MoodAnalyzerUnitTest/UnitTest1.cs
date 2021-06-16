@@ -28,5 +28,17 @@ namespace MoodAnalyzerUnitTest
             Assert.AreEqual(expected, moodAnalyzer.AnalyzeMood());
         }
 
+        [Test]
+        // Given Null Mood Should Return Happy
+        public void GivenNullMoodShouldReturnHappy()
+        {
+            //expected string will be happy
+            string expected = "Happy";
+            //create a object of cass moodanalyzer with Null value
+            MoodAnalyzer moodAnalyzer = new MoodAnalyzer(null);
+            //assertion is a boolean expression at a specific point in a program 
+            Assert.AreEqual(expected, moodAnalyzer.AnalyzeMood());
+        }
+
     }
 }
