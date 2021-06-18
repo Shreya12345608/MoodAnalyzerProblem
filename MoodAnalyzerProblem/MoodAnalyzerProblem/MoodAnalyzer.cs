@@ -24,6 +24,10 @@ namespace MoodAnalyzerProblem
             //UC2
             try
             {
+                if (this.Message.Equals(string.Empty))
+                {
+                    throw new MoodAnalyzerCustomException(MoodAnalyzerCustomException.ExceptionsType.EMPTY_MESSAGE, "Message should not be Empty");
+                }
                 // put the code here that may raise exceptions
                 //if message contains sad
                 if (this.Message.Contains("Sad"))
@@ -33,11 +37,15 @@ namespace MoodAnalyzerProblem
                     //else happy
                     return "Happy";
             }
-            catch
+            catch (NullReferenceException)
             {
-                // handle exception here
-                return "Happy";
+                throw new MoodAnalyzerCustomException(MoodAnalyzerCustomException.ExceptionsType.NULL_MESSAGE, "Message should not be Null");
             }
+            //catch
+            //{
+            //    // handle exception here
+            //    return "Happy";
+            //}
         }
     }
 }

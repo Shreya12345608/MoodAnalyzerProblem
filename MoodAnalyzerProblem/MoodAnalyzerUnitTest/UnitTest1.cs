@@ -32,12 +32,51 @@ namespace MoodAnalyzerUnitTest
         // Given Null Mood Should Return Happy
         public void GivenNullMoodShouldReturnHappy()
         {
-            //expected string will be happy
-            string expected = "Happy";
-            //create a object of cass moodanalyzer with Null value
-            MoodAnalyzer moodAnalyzer = new MoodAnalyzer(null);
-            //assertion is a boolean expression at a specific point in a program 
-            Assert.AreEqual(expected, moodAnalyzer.AnalyzeMood());
+            try
+            {
+                //expected string will be happy
+                string expected = "Happy";
+                //create a object of cass moodanalyzer with Null value
+                MoodAnalyzer moodAnalyzer = new MoodAnalyzer(null);
+                //assertion is a boolean expression at a specific point in a program 
+                Assert.AreEqual(expected, moodAnalyzer.AnalyzeMood());
+            }
+            catch(MoodAnalyzerCustomException e)
+            {
+                Assert.AreEqual(MoodAnalyzerCustomException.ExceptionsType.NULL_MESSAGE, e.type);
+            }
+        }
+        [Test]
+       // [DataRow(" ")]
+        public void GivenEmptyMood_ShouldThrow_MoodAnalysisEmptyTypeException()
+        {
+            try
+            {
+                string expected = "Happy";
+                string message = "";
+                MoodAnalyzer moodAnalyzer = new MoodAnalyzer(message);
+                Assert.AreEqual(expected, moodAnalyzer.AnalyzeMood());
+            }
+            catch (MoodAnalyzerCustomException e)
+            {
+                Assert.AreEqual("Message should not be Empty", e.Message);
+            }
+        }
+        [Test]
+       // [DataRow(null)]
+        public void GivenNullMood_ShouldThrow_MoodAnalysisEmptyTypeException()
+        {
+            try
+            {
+                string expected = "Happy";
+                string message = null;
+                MoodAnalyzer moodAnalyzer = new MoodAnalyzer(message);
+                Assert.AreEqual(expected, moodAnalyzer.AnalyzeMood());
+            }
+            catch (MoodAnalyzerCustomException e)
+            {
+                Assert.AreEqual("Message should not be Null", e.Message);
+            }
         }
 
     }
