@@ -11,6 +11,9 @@ namespace MoodAnalyzerProblem
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Mood Analyzer Problem");
+            MoodAnalyzer moodAnalyzer = new MoodAnalyzer(null);
+            Console.WriteLine(moodAnalyzer.AnalyzeMood());
         }
+
     }
 }

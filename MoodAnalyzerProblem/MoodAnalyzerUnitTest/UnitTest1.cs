@@ -41,20 +41,23 @@ namespace MoodAnalyzerUnitTest
                 //assertion is a boolean expression at a specific point in a program 
                 Assert.AreEqual(expected, moodAnalyzer.AnalyzeMood());
             }
-            catch(MoodAnalyzerCustomException e)
+            catch (MoodAnalyzerCustomException e)
             {
                 Assert.AreEqual(MoodAnalyzerCustomException.ExceptionsType.NULL_MESSAGE, e.type);
             }
         }
         [Test]
-       // [DataRow(" ")]
+        // [DataRow(" ")]
         public void GivenEmptyMood_ShouldThrow_MoodAnalysisEmptyTypeException()
         {
             try
             {
+                //expected string will be happy
                 string expected = "Happy";
                 string message = "";
+                //create a object of cass moodanalyzer with message value
                 MoodAnalyzer moodAnalyzer = new MoodAnalyzer(message);
+                //assertion is a boolean expression at a specific point in a program 
                 Assert.AreEqual(expected, moodAnalyzer.AnalyzeMood());
             }
             catch (MoodAnalyzerCustomException e)
@@ -63,20 +66,31 @@ namespace MoodAnalyzerUnitTest
             }
         }
         [Test]
-       // [DataRow(null)]
+        // [DataRow(null)]
         public void GivenNullMood_ShouldThrow_MoodAnalysisEmptyTypeException()
         {
             try
             {
+                //expected string will be happy
                 string expected = "Happy";
                 string message = null;
+                //create a object of cass moodanalyzer with message value
                 MoodAnalyzer moodAnalyzer = new MoodAnalyzer(message);
+                //assertion is a boolean expression at a specific point in a program 
                 Assert.AreEqual(expected, moodAnalyzer.AnalyzeMood());
             }
             catch (MoodAnalyzerCustomException e)
-            {
+            {                                                                                                                                                                                        
                 Assert.AreEqual("Message should not be Null", e.Message);
             }
+        }
+        [Test]
+        public void GivenMooadAnalyzerClassName_WhenAnalyze_ShouldReturnObject()
+        {
+            object obj = new MoodAnalyzer(null);
+            object actual = MoodAnalyzerReflection.CreateMoodAnalysis("MoodAnalyzerProblem.MoodAnalyzer", "MoodAnalyzer");
+            //obj.Equals(actual);
+            Assert.AreEqual(obj.GetType().Equals(actual.GetType()), true);
         }
 
     }

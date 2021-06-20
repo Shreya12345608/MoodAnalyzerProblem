@@ -10,42 +10,37 @@ namespace MoodAnalyzerProblem
     /// public classMood Analyzer
     /// </summary>
     public class MoodAnalyzer
-    {//instance variable
-        private string Message;
-        //constructor for MoodAnalyzer 
+    {
+        private string message;
         public MoodAnalyzer(string message)
         {
-            //this indicate difff of global name and method parrameter
-            this.Message = message;
+            this.message = message;
         }
-        //method for MoodAnalyzer
+        public MoodAnalyzer()
+        {
+
+        }
         public string AnalyzeMood()
         {
-            //UC2
             try
             {
-                if (this.Message.Equals(string.Empty))
+                if (this.message.Equals(string.Empty))
                 {
                     throw new MoodAnalyzerCustomException(MoodAnalyzerCustomException.ExceptionsType.EMPTY_MESSAGE, "Message should not be Empty");
                 }
-                // put the code here that may raise exceptions
-                //if message contains sad
-                if (this.Message.Contains("Sad"))
-                    // it will retrun sad
+                if (this.message.Contains("Sad"))
+                {
                     return "Sad";
+                }
                 else
-                    //else happy
+                {
                     return "Happy";
+                }
             }
             catch (NullReferenceException)
             {
                 throw new MoodAnalyzerCustomException(MoodAnalyzerCustomException.ExceptionsType.NULL_MESSAGE, "Message should not be Null");
             }
-            //catch
-            //{
-            //    // handle exception here
-            //    return "Happy";
-            //}
         }
     }
 }
